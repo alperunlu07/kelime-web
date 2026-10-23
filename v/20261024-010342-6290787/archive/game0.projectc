@@ -254,7 +254,7 @@ shared_state = 1
 
 [kayip]
 api_base = off
-build = 6944578 2026-10-23 18:04
-build_id = 20261023-180423-6944578
+build = 6290787 2026-10-24 01:03
+build_id = 20261024-010342-6290787
 site_root = ../../
 
