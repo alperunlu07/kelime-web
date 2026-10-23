@@ -152,7 +152,7 @@ max_count = 128
 [ios]
 launch_screen = /builtins/manifests/ios/LaunchScreen.storyboardc
 pre_renderered_icons = 0
-bundle_identifier = example.unnamed
+bundle_identifier = com.pfgames.wordquest
 bundle_name = 
 infoplist = /builtins/manifests/ios/Info.plist
 privacymanifest = /builtins/manifests/ios/PrivacyInfo.xcprivacy
@@ -162,7 +162,7 @@ localizations = en
 
 [android]
 version_code = 1
-minimum_sdk_version = 21
+minimum_sdk_version = 23
 target_sdk_version = 36
 package = com.pfgames.wordquest
 gcm_sender_id = 
@@ -249,12 +249,16 @@ max_time_step = 0.033333
 
 [native_extension]
 
+[iap]
+iap_provider = GooglePlay
+auto_finish_transactions = 0
+
 [script]
 shared_state = 1
 
 [kayip]
 api_base = off
-build = 32d8d37 2026-10-23 18:06
-build_id = 20261023-180628-32d8d37
+build = 670ccfc 2026-10-24 01:24
+build_id = 20261024-012423-670ccfc
 site_root = ../../
 
