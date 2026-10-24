@@ -33,7 +33,7 @@
 		fetch("version.json?t=" + Date.now(), { cache: "no-store" })
 			.then(function (r) { if (!r.ok) { throw new Error(r.status); } return r.json(); })
 			.then(function (v) { go(v.id); })
-			.catch(function () { go("20261024-122008-a4837d4"); });
+			.catch(function () { go("20261024-125628-a4837d4"); });
 	})();
 	</script>
 </body>
