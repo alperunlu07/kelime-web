@@ -19,7 +19,7 @@
 	<meta name="application-name" content="Kayıp Renkler">
 	<meta name="theme-color" content="#1b3468">
 	<meta name="format-detection" content="telephone=no">
-	<meta name="kayip-build" content="11d9b59 2026-10-24 13:40">
+	<meta name="kayip-build" content="88780e4 2026-10-24 14:39">
 	<link rel="manifest" href="../../manifest.webmanifest">
 	<link rel="icon" type="image/png" sizes="192x192" href="../../icons/icon-192.png">
 	<link rel="apple-touch-icon" sizes="180x180" href="../../icons/apple-touch-icon.png">
@@ -155,6 +155,7 @@
 	#canvas, #canvas-container { touch-action: none; }
 	#canvas { display: block; }
 	.buttons-background { display: none !important; height: 0 !important; }
+	#canvas { width: var(--kcw, 100%) !important; height: var(--kch, auto) !important; display: block !important; }
 	.canvas-app-progress { background-color: #10224a !important; }
 	.canvas-app-progress-bar { background-color: #f5b83d !important; }
 	#kayip-update {
@@ -198,6 +199,15 @@
 	<div id="kayip-update" onclick="location.replace('../../?r=' + Date.now())">Yeni sürüm hazır — yenilemek için dokun</div>
 	<script id='engine-setup' type='text/javascript'>
 		// Fit the 720x1280 game into the visible viewport (letterboxed, no scroll).
+		window.kayipSafe = function() {
+			var p = document.getElementById('kayip-safe');
+			if (!p) { p = document.createElement('div'); p.id = 'kayip-safe';
+				p.style.cssText = 'position:fixed;left:0;top:0;width:0;height:0;visibility:hidden;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)';
+				document.body.appendChild(p); }
+			var cs = getComputedStyle(p);
+			var c = document.getElementById('canvas');
+			return parseFloat(cs.paddingTop || 0) + ',' + parseFloat(cs.paddingBottom || 0) + ',' + (c ? c.clientWidth : window.innerWidth);
+		};
 		CUSTOM_PARAMETERS["resize_window_callback"] = function() {
 			var vv = window.visualViewport;
 			var w = Math.round(vv ? vv.width : window.innerWidth);
@@ -210,14 +220,16 @@
 			CUSTOM_PARAMETERS.resize_window_prev_inner_height = h;
 			var target = 720 / 1280;
 			var cw = w, ch = h;
-			if (w / h > target) { cw = Math.round(h * target); } else { ch = Math.round(w / target); }
+			// taller than 9:16 fills the screen (GUI pins HUD/nav to the edges);
+			// wider screens (tablets/desktop) keep side bars
+			if (w / h > target) { cw = Math.round(h * target); }
 			var dpi = Math.min(window.devicePixelRatio || 1, 2);
 			var app = document.getElementById('app-container');
 			var canvas = document.getElementById('canvas');
 			app.style.width = w + "px";
 			app.style.height = h + "px";
-			canvas.style.width = cw + "px";
-			canvas.style.height = ch + "px";
+			document.documentElement.style.setProperty("--kcw", cw + "px");
+			document.documentElement.style.setProperty("--kch", ch + "px");
 			canvas.width = Math.floor(cw * dpi);
 			canvas.height = Math.floor(ch * dpi);
 			window.scrollTo(0, 0);
@@ -231,7 +243,7 @@
 		// Update check: when the app comes back to the foreground, compare this
 		// build with the published one and offer a reload.
 		(function() {
-			var mine = "20261024-134042-11d9b59";
+			var mine = "20261024-143939-88780e4";
 			var root = "../../";
 			if (!mine || !root) { return; }
 			function check() {
