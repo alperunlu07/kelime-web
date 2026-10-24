@@ -60,7 +60,7 @@ sub_step_count = 4
 
 [bootstrap]
 main_collection = /main/main.collectionc
-render = /builtins/render/default.renderc
+render = /main/kayip.renderc
 debug_init_script = 
 
 [graphics]
@@ -257,8 +257,8 @@ auto_finish_transactions = 0
 shared_state = 1
 
 [kayip]
-api_base = off
-build = 670ccfc 2026-10-24 01:24
-build_id = 20261024-012423-670ccfc
+api_base = https://kelime-api-ewrs.onrender.com
+build = 26cce3e 2026-10-24 07:32
+build_id = 20261024-073211-26cce3e
 site_root = ../../
 
