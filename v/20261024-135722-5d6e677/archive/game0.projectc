@@ -258,7 +258,7 @@ shared_state = 1
 
 [kayip]
 api_base = https://kelime-api-ewrs.onrender.com
-build = 7e9c17d 2026-10-24 12:56
-build_id = 20261024-125657-7e9c17d
+build = 5d6e677 2026-10-24 13:57
+build_id = 20261024-135722-5d6e677
 site_root = ../../
 
