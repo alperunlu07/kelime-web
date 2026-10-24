@@ -152,7 +152,7 @@ max_count = 128
 [ios]
 launch_screen = /builtins/manifests/ios/LaunchScreen.storyboardc
 pre_renderered_icons = 0
-bundle_identifier = example.unnamed
+bundle_identifier = com.pfgames.wordquest
 bundle_name = 
 infoplist = /builtins/manifests/ios/Info.plist
 privacymanifest = /builtins/manifests/ios/PrivacyInfo.xcprivacy
@@ -162,7 +162,7 @@ localizations = en
 
 [android]
 version_code = 1
-minimum_sdk_version = 21
+minimum_sdk_version = 23
 target_sdk_version = 36
 package = com.pfgames.wordquest
 gcm_sender_id = 
@@ -249,12 +249,16 @@ max_time_step = 0.033333
 
 [native_extension]
 
+[iap]
+iap_provider = GooglePlay
+auto_finish_transactions = 0
+
 [script]
 shared_state = 1
 
 [kayip]
-api_base = off
-build = 752524c 2026-10-24 00:09
-build_id = 20261024-000911-752524c
+api_base = https://kelime-api-ewrs.onrender.com
+build = e35aba4 2026-10-24 05:48
+build_id = 20261024-054810-e35aba4
 site_root = ../../
 
